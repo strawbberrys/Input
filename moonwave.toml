@@ -1,6 +1,10 @@
 title = "Input"
 
+[home]
+enabled = true
+includeReadme = true
+
 [docusaurus]
 url = "https://input.pages.dev/"
 baseUrl = "/"
-tagline = "A Roblox client/server module for handling user input."
+tagline = "A Roblox module for handling user input on the server."
