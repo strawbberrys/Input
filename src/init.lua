@@ -1,11 +1,14 @@
 game:GetService("ProximityPromptService").MaxPromptsVisible = 100
 
+type callback = (Player?) -> ()
+
 -- errors
 local NO_KEY_GIVEN = "Could not create an input object because no key was given."
 local NO_CALLBACK_GIVEN = "Could not set callback because no callback was given."
 local NO_CALLBACK_SET = "Could not disconnect/reconnect because no callback was set."
 local CALLBACK_NOT_CONNECTED = "Could not disconnect because connection is already disconnected."
 local CALLBACK_ALREADY_CONNECTED = "Could not reconnected because connection is already connected."
+local NO_AMOUNT_GIVEN = "Could not set timeout because no amount was given."
 
 --[=[
 	@class Input
@@ -17,9 +20,8 @@ local CALLBACK_ALREADY_CONNECTED = "Could not reconnected because connection is 
 
 	```lua
 	local input = Input.new(Enum.KeyCode.E)
-	:setCallback(print)
-	:disconnect()
-	:reconnect()
+	:onBegan(print)
+	:onEnd(warn)
 	```
 	:::
 ]=]
@@ -48,6 +50,13 @@ do
 		proximityPrompt.KeyboardKeyCode = key
 
 		--[=[
+			@prop proximityPrompt ProximityPrompt
+			@within Input
+
+			The [ProximityPrompt] created with [Input.new].
+		]=]
+
+		--[=[
 			@prop key Enum.KeyCode
 			@within Input
 
@@ -62,52 +71,122 @@ do
 
 		Sets the callback to be ran when the input key is pressed.
 	]=]
-	function Input:onTriggered(callback: (Player | nil) -> ())
+	function Input:onBegan(callback: callback)
 		assert(callback, NO_CALLBACK_GIVEN)
 
 		--[=[
-			@prop callback (Player | nil) -> ()
+			@prop beganCallback (Player | nil) -> ()
 			@within Input
 
-			The callback set with [Input:setCallback].
+			The callback set with [Input:onBegan].
 		]=]
-		self.callback = callback
+		self.beganCallback = callback
 
 		--[=[
-			@prop connection RBXScriptConnection
+			@prop beganConnection RBXScriptConnection
 			@within Input
 
-			The connection created in [Input:setCallback].
+			The connection created in [Input:onBegan].
 		]=]
-		self.connection = self.proximityPrompt.Triggered:Connect(callback)
+		self.beganConnection = self.proximityPrompt.Triggered:Connect(callback)
 
 		return self
 	end
 
-	--TODO: add onBegin and onEnd functions, or maybe set it as an argument for onTriggered and change the name back to setCallback
-
 	--[=[
 		@return Input
 
-		Disconnects the input connection if it was set with [Input:setCallback].
+		Sets the callback to be ran when the input key is let go.
 	]=]
-	function Input:disconnect()
-		assert(self.callback, NO_CALLBACK_SET)
-		assert(not self.connection.Connected, CALLBACK_NOT_CONNECTED)
+	function Input:onEnd(callback: callback)
+		assert(callback, NO_CALLBACK_GIVEN)
 
-		self.connection:Disconnect()
+		--[=[
+			@prop endCallback (Player | nil) -> ()
+			@within Input
+
+			The callback set with [Input:onEnd].
+		]=]
+		self.endCallback = callback
+
+		--[=[
+			@prop endConnection RBXScriptConnection
+			@within Input
+
+			The connection created in [Input:onEnd].
+		]=]
+		self.endConnection = self.proximityPrompt.TriggerEnded:Connect(callback)
+
+		return self
 	end
 
 	--[=[
 		@return Input
 
-		Reconnects the input connection if the callback was already set with [Input:setCallback].
+		Sets a timeout in between key presses for [Input:onBegan].
 	]=]
-	function Input:reconnect()
-		assert(self.callback, NO_CALLBACK_SET)
-		assert(self.connection.Connected, CALLBACK_ALREADY_CONNECTED)
+	function Input:setTimeout(amount: number)
+		assert(amount, NO_AMOUNT_GIVEN)
+		assert(self.beganCallback, NO_CALLBACK_SET)
 
-		self.proximityPrompt.Triggered:Connect(self.callback)
+		if (self.beganConnection.Connected) then
+			self.beganConnection:Disconnect()
+
+			local lastPressed = -amount
+
+			self.proximityPrompt.Triggered:Connect(function(player)
+				if (os.clock() - lastPressed >= amount) then
+					self.callback(player)
+				end
+			end)
+		end
+
+		self.timeout = amount
+
+		return self
+	end
+
+	--[=[
+		@return Input
+
+		Disconnects either of the input connections created with [Input:onBegan] or [Input:onEnd] depending on the type argument.
+	]=]
+	function Input:disconnect(type: Enum.UserInputState)
+		local data = if (type == Enum.UserInputState.Begin) then {callback = self.beganCallback, connection = self.beganConnection} elseif (type == Enum.UserInputState.End) then {callback = self.endCallback, connection = self.endConnection} else nil
+
+		assert(data.callback, NO_CALLBACK_SET)
+		assert(not data.connection.Connected, CALLBACK_NOT_CONNECTED)
+
+		data.connection:Disconnect()
+
+		return self
+	end
+
+	--[=[
+		@return Input
+
+		Reconnects either of the input connections created with [Input:onBegan] or [Input:onEnd] depending on the type argument.
+	]=]
+	function Input:reconnect(type: Enum.UserInputState)
+		local data = if (type == Enum.UserInputState.Begin) then {callback = self.beganCallback, connection = self.beganConnection} elseif (type == Enum.UserInputState.End) then {callback = self.endCallback, connection = self.endConnection} else nil
+
+		assert(data.callback, NO_CALLBACK_SET)
+		assert(data.connection.Connected, CALLBACK_ALREADY_CONNECTED)
+
+		if (self.timeout) then
+			local amount = self.timeout
+			local lastPressed = -amount
+
+			self.proximityPrompt.Triggered:Connect(function(player)
+				if (os.clock() - lastPressed >= amount) then
+					data.callback(player)
+				end
+			end)
+		else
+			self.proximityPrompt.Triggered:Connect(data.callback)
+		end
+
+		return self
 	end
 end
 
