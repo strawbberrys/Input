@@ -1,1 +1,5 @@
 title = "Input"
+
+[docusaurus]
+url = "https://input.pages.dev/"
+baseUrl = "/"
