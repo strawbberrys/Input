@@ -16,4 +16,4 @@ Well, it's simple. This module provides a server-side implementation for input m
 
 ### What customizable features does this module contain?
 
-As an example, if you want to add time-out in between key presses, you would have to create a custom function to get the time between each press. But now with this module, you can simply use [Input:setTimeout](). There are many other features which you would usually need to create customly, but with this module everything is laid out for you.
+As an example, if you want to add time-out in between key presses, you would have to create a custom function to get the time between each press. But now with this module, you can simply use [Input:setTimeout](https://input.pages.dev/api/Input#setTimeout). There are many other features which you would usually need to create customly, but with this module everything is laid out for you.
