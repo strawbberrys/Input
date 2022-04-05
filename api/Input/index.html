@@ -11,9 +11,8 @@ The [Input] class is chained, meaning it returns itself. That means you can do t
 
 ```lua
 local input = Input.new(Enum.KeyCode.E)
-:setCallback(print)
-:disconnect()
-:reconnect()
+:onBegan(print)
+:onEnd(warn)
 ```
 :::"><meta data-react-helmet="true" property="og:description" content="Used to create and handle input connections.
 
@@ -22,13 +21,12 @@ The [Input] class is chained, meaning it returns itself. That means you can do t
 
 ```lua
 local input = Input.new(Enum.KeyCode.E)
-:setCallback(print)
-:disconnect()
-:reconnect()
+:onBegan(print)
+:onEnd(warn)
 ```
 :::"><meta data-react-helmet="true" property="og:url" content="https://input.pages.dev//api/Input"><meta data-react-helmet="true" name="docusaurus_locale" content="en"><meta data-react-helmet="true" name="docusaurus_tag" content="default"><link data-react-helmet="true" rel="canonical" href="https://input.pages.dev//api/Input"><link data-react-helmet="true" rel="alternate" href="https://input.pages.dev//api/Input" hreflang="en"><link data-react-helmet="true" rel="alternate" href="https://input.pages.dev//api/Input" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.71e0164d.css">
-<link rel="preload" href="/assets/js/runtime~main.999db19f.js" as="script">
-<link rel="preload" href="/assets/js/main.56761dd2.js" as="script">
+<link rel="preload" href="/assets/js/runtime~main.da5aec89.js" as="script">
+<link rel="preload" href="/assets/js/main.f7f952f3.js" as="script">
 </head>
 <body>
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -43,26 +41,35 @@ local input = Input.new(Enum.KeyCode.E)
   <div class="admonition-content">
     <p>The <a href="/api/Input">Input</a> class is chained, meaning it returns itself. That means you can do things like this.</p>
     <pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> input <span class="token operator">=</span> Input<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span>Enum<span class="token punctuation">.</span>KeyCode<span class="token punctuation">.</span>E<span class="token punctuation">)</span>
-<span class="token punctuation">:</span><span class="token function">setCallback</span><span class="token punctuation">(</span>print<span class="token punctuation">)</span>
-<span class="token punctuation">:</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">:</span><span class="token function">reconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">:</span><span class="token function">onBegan</span><span class="token punctuation">(</span>print<span class="token punctuation">)</span>
+<span class="token punctuation">:</span><span class="token function">onEnd</span><span class="token punctuation">(</span>warn<span class="token punctuation">)</span>
 </code></pre>
   </div>
 </div>
-</div></header><h2 class="anchor anchorWithStickyNavbar_31ik" id="properties">Properties<a aria-hidden="true" class="hash-link" href="#properties" title="Direct link to heading">​</a></h2><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="key"><code style="text-decoration:none">key</code><a aria-hidden="true" class="hash-link" href="#key" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L56"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->.<!-- -->key<!-- -->:<!-- --> </code> <code class="blue_2Afy">Enum.KeyCode</code></div><div>
+</div></header><h2 class="anchor anchorWithStickyNavbar_31ik" id="properties">Properties<a aria-hidden="true" class="hash-link" href="#properties" title="Direct link to heading">​</a></h2><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="proximityPrompt"><code style="text-decoration:none">proximityPrompt</code><a aria-hidden="true" class="hash-link" href="#proximityPrompt" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L58"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->.<!-- -->proximityPrompt<!-- -->:<!-- --> </code> <code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/ProximityPrompt" target="_blank" rel="noopener noreferrer">ProximityPrompt<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code></div><div>
+<p>The <a href="https://developer.roblox.com/en-us/api-reference/class/ProximityPrompt" target="_blank">ProximityPrompt</a> created with <a href="/api/Input#new">Input.new</a>.</p>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="key"><code style="text-decoration:none">key</code><a aria-hidden="true" class="hash-link" href="#key" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L65"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->.<!-- -->key<!-- -->:<!-- --> </code> <code class="blue_2Afy">Enum.KeyCode</code></div><div>
 <p>The <a href="https://developer.roblox.com/en-us/api-reference/datatype/Enum#KeyCode" target="_blank">Enum.KeyCode</a> given with <a href="/api/Input#new">Input.new</a>.</p>
-</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="callback"><code style="text-decoration:none">callback</code><a aria-hidden="true" class="hash-link" href="#callback" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L74"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->.<!-- -->callback<!-- -->:<!-- --> </code> <code class="purple__nFc">(</code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_1JtD"> | </code><code class="blue_2Afy">nil</code><code class="purple__nFc">)</code><code class="purple__nFc"> → </code><code class="purple__nFc">(</code><code class="purple__nFc">)</code></div><div>
-<p>The callback set with <a href="/api/Input#setCallback">Input:setCallback</a>.</p>
-</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="connection"><code style="text-decoration:none">connection</code><a aria-hidden="true" class="hash-link" href="#connection" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L82"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->.<!-- -->connection<!-- -->:<!-- --> </code> <code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/RBXScriptConnection" target="_blank" rel="noopener noreferrer">RBXScriptConnection<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code></div><div>
-<p>The connection created in <a href="/api/Input#setCallback">Input:setCallback</a>.</p>
-</div><h2 class="anchor anchorWithStickyNavbar_31ik" id="functions">Functions<a aria-hidden="true" class="hash-link" href="#functions" title="Direct link to heading">​</a></h2><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="new"><code style="text-decoration:none">new</code><a aria-hidden="true" class="hash-link" href="#new" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L44"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->.</code><code class="green_3LnD">new</code><code>(</code><code>key<!-- -->: </code><code class="blue_2Afy">Enum.KeyCode</code><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/api/Input">Input</a></code></div><div>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="beganCallback"><code style="text-decoration:none">beganCallback</code><a aria-hidden="true" class="hash-link" href="#beganCallback" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L83"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->.<!-- -->beganCallback<!-- -->:<!-- --> </code> <code class="purple__nFc">(</code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_1JtD"> | </code><code class="blue_2Afy">nil</code><code class="purple__nFc">)</code><code class="purple__nFc"> → </code><code class="purple__nFc">(</code><code class="purple__nFc">)</code></div><div>
+<p>The callback set with <a href="/api/Input#onBegan">Input:onBegan</a>.</p>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="beganConnection"><code style="text-decoration:none">beganConnection</code><a aria-hidden="true" class="hash-link" href="#beganConnection" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L91"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->.<!-- -->beganConnection<!-- -->:<!-- --> </code> <code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/RBXScriptConnection" target="_blank" rel="noopener noreferrer">RBXScriptConnection<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code></div><div>
+<p>The connection created in <a href="/api/Input#onBegan">Input:onBegan</a>.</p>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="endCallback"><code style="text-decoration:none">endCallback</code><a aria-hidden="true" class="hash-link" href="#endCallback" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L110"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->.<!-- -->endCallback<!-- -->:<!-- --> </code> <code class="purple__nFc">(</code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_1JtD"> | </code><code class="blue_2Afy">nil</code><code class="purple__nFc">)</code><code class="purple__nFc"> → </code><code class="purple__nFc">(</code><code class="purple__nFc">)</code></div><div>
+<p>The callback set with <a href="/api/Input#onEnd">Input:onEnd</a>.</p>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="endConnection"><code style="text-decoration:none">endConnection</code><a aria-hidden="true" class="hash-link" href="#endConnection" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L118"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->.<!-- -->endConnection<!-- -->:<!-- --> </code> <code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/RBXScriptConnection" target="_blank" rel="noopener noreferrer">RBXScriptConnection<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code></div><div>
+<p>The connection created in <a href="/api/Input#onEnd">Input:onEnd</a>.</p>
+</div><h2 class="anchor anchorWithStickyNavbar_31ik" id="functions">Functions<a aria-hidden="true" class="hash-link" href="#functions" title="Direct link to heading">​</a></h2><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="new"><code style="text-decoration:none">new</code><a aria-hidden="true" class="hash-link" href="#new" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L46"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->.</code><code class="green_3LnD">new</code><code>(</code><code>key<!-- -->: </code><code class="blue_2Afy">Enum.KeyCode</code><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/api/Input">Input</a></code></div><div>
 <p>Creates an input object with the specified <a href="https://developer.roblox.com/en-us/api-reference/datatype/Enum#KeyCode" target="_blank">Enum.KeyCode</a>.</p>
-</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="onTriggered"><code style="text-decoration:none">onTriggered</code><a aria-hidden="true" class="hash-link" href="#onTriggered" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L65"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->:</code><code class="green_3LnD">onTriggered</code><code>(</code><code>callback<!-- -->: </code><code class="purple__nFc">(</code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/class/Player" target="_blank" rel="noopener noreferrer">Player<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code class="op_1JtD"> | </code><code class="blue_2Afy">nil</code><code class="purple__nFc">)</code><code class="purple__nFc"> → </code><code class="purple__nFc">(</code><code class="purple__nFc">)</code><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/api/Input">Input</a></code></div><div>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="onBegan"><code style="text-decoration:none">onBegan</code><a aria-hidden="true" class="hash-link" href="#onBegan" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L74"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->:</code><code class="green_3LnD">onBegan</code><code>(</code><code>callback<!-- -->: </code><code class="blue_2Afy">callback</code><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/api/Input">Input</a></code></div><div>
 <p>Sets the callback to be ran when the input key is pressed.</p>
-</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="disconnect"><code style="text-decoration:none">disconnect</code><a aria-hidden="true" class="hash-link" href="#disconnect" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L94"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->:</code><code class="green_3LnD">disconnect</code><code>(</code><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/api/Input">Input</a></code></div><div>
-<p>Disconnects the input connection if it was set with <a href="/api/Input#setCallback">Input:setCallback</a>.</p>
-</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="reconnect"><code style="text-decoration:none">reconnect</code><a aria-hidden="true" class="hash-link" href="#reconnect" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L106"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->:</code><code class="green_3LnD">reconnect</code><code>(</code><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/api/Input">Input</a></code></div><div>
-<p>Reconnects the input connection if the callback was already set with <a href="/api/Input#setCallback">Input:setCallback</a>.</p>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="onEnd"><code style="text-decoration:none">onEnd</code><a aria-hidden="true" class="hash-link" href="#onEnd" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L101"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->:</code><code class="green_3LnD">onEnd</code><code>(</code><code>callback<!-- -->: </code><code class="blue_2Afy">callback</code><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/api/Input">Input</a></code></div><div>
+<p>Sets the callback to be ran when the input key is let go.</p>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="setTimeout"><code style="text-decoration:none">setTimeout</code><a aria-hidden="true" class="hash-link" href="#setTimeout" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L128"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->:</code><code class="green_3LnD">setTimeout</code><code>(</code><code>amount<!-- -->: </code><code class="blue_2Afy">number</code><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/api/Input">Input</a></code></div><div>
+<p>Sets a timeout in between key presses for <a href="/api/Input#onBegan">Input:onBegan</a>.</p>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="disconnect"><code style="text-decoration:none">disconnect</code><a aria-hidden="true" class="hash-link" href="#disconnect" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L154"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->:</code><code class="green_3LnD">disconnect</code><code>(</code><code>type<!-- -->: </code><code class="blue_2Afy">Enum.UserInputState</code><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/api/Input">Input</a></code></div><div>
+<p>Disconnects either of the input connections created with <a href="/api/Input#onBegan">Input:onBegan</a> or <a href="/api/Input#onEnd">Input:onEnd</a> depending on the type argument.</p>
+</div><div class="divider_3z1R"></div><h3 class="anchor anchorWithStickyNavbar_31ik" id="reconnect"><code style="text-decoration:none">reconnect</code><a aria-hidden="true" class="hash-link" href="#reconnect" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_1UH0"><a class="sourceButton_2aE5" href="https://github.com/strawbberrys/Input/blob/master/src/init.lua#L170"><div class="sourceButtonText_monK">&lt;/&gt;</div></a></div><div class="memberString_P8-X"><code>Input<!-- -->:</code><code class="green_3LnD">reconnect</code><code>(</code><code>type<!-- -->: </code><code class="blue_2Afy">Enum.UserInputState</code><code>) → </code><code class="blue_2Afy"><a style="text-decoration:underline;color:inherit" href="/api/Input">Input</a></code></div><div>
+<p>Reconnects either of the input connections created with <a href="/api/Input#onBegan">Input:onBegan</a> or <a href="/api/Input#onEnd">Input:onEnd</a> depending on the type argument.</p>
 </div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
     &quot;functions&quot;: [
         {
@@ -83,18 +90,18 @@ local input = Input.new(Enum.KeyCode.E)
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 44,
+                &quot;line&quot;: 46,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
         {
-            &quot;name&quot;: &quot;onTriggered&quot;,
+            &quot;name&quot;: &quot;onBegan&quot;,
             &quot;desc&quot;: &quot;Sets the callback to be ran when the input key is pressed.\n\t&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;callback&quot;,
                     &quot;desc&quot;: &quot;&quot;,
-                    &quot;lua_type&quot;: &quot;(Player | nil) -&gt; ()&quot;
+                    &quot;lua_type&quot;: &quot;callback&quot;
                 }
             ],
             &quot;returns&quot;: [
@@ -104,82 +111,165 @@ local input = Input.new(Enum.KeyCode.E)
                 }
             ],
             &quot;function_type&quot;: &quot;method&quot;,
-            &quot;source&quot;: {
-                &quot;line&quot;: 65,
-                &quot;path&quot;: &quot;src/init.lua&quot;
-            }
-        },
-        {
-            &quot;name&quot;: &quot;disconnect&quot;,
-            &quot;desc&quot;: &quot;Disconnects the input connection if it was set with [Input:setCallback].\n\t&quot;,
-            &quot;params&quot;: [],
-            &quot;returns&quot;: [
-                {
-                    &quot;desc&quot;: &quot;&quot;,
-                    &quot;lua_type&quot;: &quot;Input&quot;
-                }
-            ],
-            &quot;function_type&quot;: &quot;method&quot;,
-            &quot;source&quot;: {
-                &quot;line&quot;: 94,
-                &quot;path&quot;: &quot;src/init.lua&quot;
-            }
-        },
-        {
-            &quot;name&quot;: &quot;reconnect&quot;,
-            &quot;desc&quot;: &quot;Reconnects the input connection if the callback was already set with [Input:setCallback].\n\t&quot;,
-            &quot;params&quot;: [],
-            &quot;returns&quot;: [
-                {
-                    &quot;desc&quot;: &quot;&quot;,
-                    &quot;lua_type&quot;: &quot;Input&quot;
-                }
-            ],
-            &quot;function_type&quot;: &quot;method&quot;,
-            &quot;source&quot;: {
-                &quot;line&quot;: 106,
-                &quot;path&quot;: &quot;src/init.lua&quot;
-            }
-        }
-    ],
-    &quot;properties&quot;: [
-        {
-            &quot;name&quot;: &quot;key&quot;,
-            &quot;desc&quot;: &quot;The [Enum.KeyCode] given with [Input.new].\n\t\t&quot;,
-            &quot;lua_type&quot;: &quot;Enum.KeyCode&quot;,
-            &quot;source&quot;: {
-                &quot;line&quot;: 56,
-                &quot;path&quot;: &quot;src/init.lua&quot;
-            }
-        },
-        {
-            &quot;name&quot;: &quot;callback&quot;,
-            &quot;desc&quot;: &quot;The callback set with [Input:setCallback].\n\t\t&quot;,
-            &quot;lua_type&quot;: &quot;(Player | nil) -&gt; ()&quot;,
             &quot;source&quot;: {
                 &quot;line&quot;: 74,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
         {
-            &quot;name&quot;: &quot;connection&quot;,
-            &quot;desc&quot;: &quot;The connection created in [Input:setCallback].\n\t\t&quot;,
+            &quot;name&quot;: &quot;onEnd&quot;,
+            &quot;desc&quot;: &quot;Sets the callback to be ran when the input key is let go.\n\t&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;callback&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;callback&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Input&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 101,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;setTimeout&quot;,
+            &quot;desc&quot;: &quot;Sets a timeout in between key presses for [Input:onBegan].\n\t&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;amount&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;number&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Input&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 128,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;disconnect&quot;,
+            &quot;desc&quot;: &quot;Disconnects either of the input connections created with [Input:onBegan] or [Input:onEnd] depending on the type argument.\n\t&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;type&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.UserInputState&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Input&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 154,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;reconnect&quot;,
+            &quot;desc&quot;: &quot;Reconnects either of the input connections created with [Input:onBegan] or [Input:onEnd] depending on the type argument.\n\t&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;type&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Enum.UserInputState&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Input&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 170,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        }
+    ],
+    &quot;properties&quot;: [
+        {
+            &quot;name&quot;: &quot;proximityPrompt&quot;,
+            &quot;desc&quot;: &quot;The [ProximityPrompt] created with [Input.new].\n\t\t&quot;,
+            &quot;lua_type&quot;: &quot;ProximityPrompt&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 58,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;key&quot;,
+            &quot;desc&quot;: &quot;The [Enum.KeyCode] given with [Input.new].\n\t\t&quot;,
+            &quot;lua_type&quot;: &quot;Enum.KeyCode&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 65,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;beganCallback&quot;,
+            &quot;desc&quot;: &quot;The callback set with [Input:onBegan].\n\t\t&quot;,
+            &quot;lua_type&quot;: &quot;(Player | nil) -&gt; ()&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 83,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;beganConnection&quot;,
+            &quot;desc&quot;: &quot;The connection created in [Input:onBegan].\n\t\t&quot;,
             &quot;lua_type&quot;: &quot;RBXScriptConnection&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 82,
+                &quot;line&quot;: 91,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;endCallback&quot;,
+            &quot;desc&quot;: &quot;The callback set with [Input:onEnd].\n\t\t&quot;,
+            &quot;lua_type&quot;: &quot;(Player | nil) -&gt; ()&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 110,
+                &quot;path&quot;: &quot;src/init.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;endConnection&quot;,
+            &quot;desc&quot;: &quot;The connection created in [Input:onEnd].\n\t\t&quot;,
+            &quot;lua_type&quot;: &quot;RBXScriptConnection&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 118,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         }
     ],
     &quot;types&quot;: [],
     &quot;name&quot;: &quot;Input&quot;,
-    &quot;desc&quot;: &quot;Used to create and handle input connections.\n\n:::info\nThe [Input] class is chained, meaning it returns itself. That means you can do things like this.\n\n```lua\nlocal input = Input.new(Enum.KeyCode.E)\n:setCallback(print)\n:disconnect()\n:reconnect()\n```\n:::&quot;,
+    &quot;desc&quot;: &quot;Used to create and handle input connections.\n\n:::info\nThe [Input] class is chained, meaning it returns itself. That means you can do things like this.\n\n```lua\nlocal input = Input.new(Enum.KeyCode.E)\n:onBegan(print)\n:onEnd(warn)\n```\n:::&quot;,
     &quot;source&quot;: {
-        &quot;line&quot;: 26,
+        &quot;line&quot;: 28,
         &quot;path&quot;: &quot;src/init.lua&quot;
     }
-}</pre></details></div><div class="col col--3"><div class="tableOfContents_35-E thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#callback" class="table-of-contents__link toc-highlight">callback</a></li><li><a href="#connection" class="table-of-contents__link toc-highlight">connection</a></li><li><a href="#key" class="table-of-contents__link toc-highlight">key</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#disconnect" class="table-of-contents__link toc-highlight">:disconnect</a></li><li><a href="#onTriggered" class="table-of-contents__link toc-highlight">:onTriggered</a></li><li><a href="#reconnect" class="table-of-contents__link toc-highlight">:reconnect</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2022 strawbberrys. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/assets/js/runtime~main.999db19f.js"></script>
-<script src="/assets/js/main.56761dd2.js"></script>
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_35-E thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#beganCallback" class="table-of-contents__link toc-highlight">beganCallback</a></li><li><a href="#beganConnection" class="table-of-contents__link toc-highlight">beganConnection</a></li><li><a href="#endCallback" class="table-of-contents__link toc-highlight">endCallback</a></li><li><a href="#endConnection" class="table-of-contents__link toc-highlight">endConnection</a></li><li><a href="#key" class="table-of-contents__link toc-highlight">key</a></li><li><a href="#proximityPrompt" class="table-of-contents__link toc-highlight">proximityPrompt</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#disconnect" class="table-of-contents__link toc-highlight">:disconnect</a></li><li><a href="#onBegan" class="table-of-contents__link toc-highlight">:onBegan</a></li><li><a href="#onEnd" class="table-of-contents__link toc-highlight">:onEnd</a></li><li><a href="#reconnect" class="table-of-contents__link toc-highlight">:reconnect</a></li><li><a href="#setTimeout" class="table-of-contents__link toc-highlight">:setTimeout</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2022 strawbberrys. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+<script src="/assets/js/runtime~main.da5aec89.js"></script>
+<script src="/assets/js/main.f7f952f3.js"></script>
 </body>
 </html>
