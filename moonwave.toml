@@ -3,3 +3,4 @@ title = "Input"
 [docusaurus]
 url = "https://input.pages.dev/"
 baseUrl = "/"
+tagline = "A Roblox client/server module for handling user input."
