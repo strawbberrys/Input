@@ -4,8 +4,8 @@
     <a href="https://input.pages.dev/"><strong>View docs</strong></a>
 </div>
 <!--moonwave-hide-before-this-line-->
-
-
+ 
+ 
 ## Why use this over [UserInputService](https://developer.roblox.com/en-us/api-reference/class/UserInputService)?
 
 Well, it's simple. This module provides a server-side implementation for input management and more customizable features. 
