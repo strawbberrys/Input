@@ -8,3 +8,4 @@ includeReadme = true
 url = "https://input.pages.dev/"
 baseUrl = "/"
 tagline = "A Roblox module for handling user input on the server."
+onBrokenLinks = "warn"
